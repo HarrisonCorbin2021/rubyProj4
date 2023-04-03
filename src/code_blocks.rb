@@ -11,6 +11,14 @@ def traditional_selection_sort(values)
     values
 end
 
+def rectangle(width, height)
+        (1..height).each do |i|
+            puts "*" * width
+     end
+end
+
+puts rectangle(p1, p2)
+
 #low to high
 p traditional_selection_sort([8,6,7,5,3,0,9]) {|a,b| a > b}
 #high to low
