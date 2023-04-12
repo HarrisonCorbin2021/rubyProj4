@@ -20,38 +20,53 @@ class Connect4
   end
 
   def print_board(board)
-    for (j = num_rows; j >= 0; j--)
-        puts " "
-        for (i = 0; i < 7; i++)
-            print board[i][j]
+    j = 0
+    loop do
+        if j == num_rows
+          break
         end
+        puts " "
+        loop do
+            if i == num_columns
+              break
+            end
+            print board[i][j]
+            i++
+        end
+        j++
       end
   end
 
-  def playerTurn(Board, playNum)
+  def playerTurn(board, playNum)
     chosen_column = gets
-    chosen_column = (int)(toupper(c) - 'A')
-    while (chosen_column < 0 || chosen_column >)
-      if(chosen_column == 16)
+    chosen_column = chosen_column.to_i
+    while chosen_column < 0 || chosen_column >
+      if chosen_column == 16
         puts "Goodbye"
       end
       puts "Not a valid entry."
       chosen_column = gets
-      chosen_column = (int)(toupper(c) - 'A')
+      chosen_column = chosen_column.to_i
     end
 
-    if (Board[num_columns][chosen_column] != 'x')
+    if board[num_columns][chosen_column] != 'x'
       puts "That column is full. Please choose another"
       playerTurn(Board, play_Num)
     end
 
-    for (j = 0; j < num_columns; j++)
-      if (board[j][chosen_column] == 'x')
+
+    loop do
+      if j == num_columns
+        break
+      end
+      if board[j][chosen_column] == 'x'
         board[j][chosen_column] == play_Num;
         print_board(board);
         
       end
+      j++
     end
+
     if(winCheck(play_Num,chosen_column,end_game))
       puts "Congradulations, Player #{playNum}. You Win."
     end
@@ -67,23 +82,28 @@ class Connect4
 
   def checkHV(player,index,stopHere)
     count = 0
-    for (i = 0; i < stopHere; i++)
-      if(board[i][index] == player)
-        count++;
+    i = 0
+    loop do
+      if i == stopHere
+        break
+      end
+      if board[i][index] == player
+        count++
       end
       else
         count = 0;
       end
-      if(count >= 4)
-        end_game = 1;
-        break;
+      if count >= 4
+        end_game = 1
+        break
       end
+      i++
   end
 
   def winCheck(player, start, end_game)
     checkHorizontal(player,start)
     checkVertical(player,start)
-    if(end_game == 1)
+    if end_game == 1
       return true;
     end
     return false;
