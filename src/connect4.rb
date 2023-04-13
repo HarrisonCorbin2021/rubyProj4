@@ -40,7 +40,7 @@ class Connect4
   def playerTurn(board, playNum)
     chosen_column = gets
     chosen_column = chosen_column.to_i
-    while chosen_column < 0 || chosen_column >
+    while chosen_column < 0 || chosen_column > num_columns
       if chosen_column == 16
         puts "Goodbye"
       end
