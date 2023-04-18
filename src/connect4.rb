@@ -63,14 +63,14 @@ class Connect4
       chosen_column = chosen_column.to_i
     end
 
-    if @board[@num_rows - 1][chosen_column] != 'x'
+    if @board[chosen_column][0] != 'x'
       puts "That column is full. Please choose another"
       playerTurn(@board, playNum)
     end
 
-    j = @num_rows
+    j = @num_rows - 1
     loop do
-      if j == 0
+      if j < 0
         break
       end
       if @board[chosen_column][j] == 'x'
