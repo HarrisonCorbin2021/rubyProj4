@@ -75,13 +75,12 @@ class Connect4
       end
       if @board[chosen_column][j] == 'x'
         @board[chosen_column][j] = playNum;
-        print_board(board);
         break
       end
       j -= 1
     end
 
-    if(winCheck(playNum,chosen_column))
+    if(winCheck(playNum))
       puts "Congradulations, Player #{playNum}. You Win."
       exit
     end
@@ -93,37 +92,146 @@ class Connect4
     end
   end
 
-  def checkHorizontal(player, row)
-    return checkHV(player, row, @num_columns);
-  end
-
-  def checkVertical(player, cols)
-    return checkHV(player, cols, @num_rows);
-  end
-
-  def checkHV(player,index,stopHere)
-    count = 0
+  def checkVertical(player)
     i = 0
+    j = 0
+    count = 0
     loop do
-      if i == stopHere
+      
+      if i > @num_rows
         break
       end
-      if @board[i][index] == player
-        count += 1
-      else
-        count = 0;
+      loop do
+        if j > @num_columns
+          break
+        end
+        while @board[i][j + count] == player
+          count += 1
+          #puts @board[i][j + count]
+          if j + count >= @num_columns
+            break
+          end
+        end
+        if count >= @win_length
+          @end_game = 1
+          break
+        end
+        puts count
+        count = 0
+        j += 1
       end
-      if count >= 4
-        @end_game = 1
-        break
-      end
+      j = 0
       i += 1
     end
   end
 
-  def winCheck(player, start)
-    checkHorizontal(player,start)
-    checkVertical(player,start)
+  def checkHorizontal(player)
+    i = 0
+    j = 0
+    count = 0
+    loop do
+      if i >= @num_rows
+        break
+      end
+      loop do
+        #puts j
+        if j >= @num_columns 
+          break
+        end
+        #puts @board[i - count][j]
+        while @board[i + count][j] == player
+          count += 1
+          #puts @board[i][j + count]
+          if i + count >= @num_rows
+            break
+          end
+        end
+        if count >= @win_length
+          @end_game = 1
+          break
+        end
+        #puts count
+        count = 0
+        j += 1
+        puts j
+      end
+      j = 0
+      i += 1
+    end
+    i = 0
+  end
+
+  def checkDiagonalL(player)
+    i = 0
+    j = 0
+    count = 0
+    loop do
+      
+      if i > @num_rows
+        break
+      end
+      loop do
+        if j > @num_columns
+          break
+        end
+        while @board[i + count][j + count] == player
+          count += 1
+          #puts @board[i][j + count]
+          if j + count >= @num_columns || i + count >= @num_rows 
+            break
+          end
+        end
+        if count >= @win_length
+          @end_game = 1
+          break
+        end
+        puts count
+        count = 0
+        j += 1
+      end
+      j = 0
+      i += 1
+    end
+  end
+
+  def checkDiagonalR(player)
+    i = 0
+    j = 0
+    count = 0
+    loop do
+      
+      if i > @num_rows
+        break
+      end
+      loop do
+        if j > @num_columns
+          break
+        end
+        while @board[i - count][j + count] == player
+          count += 1
+          #puts @board[i][j + count]
+          if j + count >= @num_columns || i - count < 0
+            break
+          end
+        end
+        if count >= @win_length
+          @end_game = 1
+          break
+        end
+        puts count
+        count = 0
+        j += 1
+      end
+      j = 0
+      i += 1
+    end
+  end
+
+  def winCheck(player)
+    #checkHorizontal(player)
+    #checkVertical(player)
+    checkDiagonalL(player)
+    #checkDiagonalR(player)
     if @end_game == 1
       return true;
     end
