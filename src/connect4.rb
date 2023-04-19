@@ -185,10 +185,13 @@ class Connect4
           @end_game = 1
           return
         end
-        puts count
+        if player == 1
+          print count
+        end
         count = 0
         j += 1
       end
+      puts ""
       j = 0
       i += 1
     end
