@@ -11,7 +11,7 @@ class Connect4():
 
     def __init__(self):
         #defines the board
-        self.board = [[' ' for i in range(Connect4.num_Cols)] for j in range(Connect4.num_Rows)]
+        self.board = [['x' for i in range(Connect4.num_Cols)] for j in range(Connect4.num_Rows)]
 
     def print_board(self):
         for i in Connect4.num_Cols:

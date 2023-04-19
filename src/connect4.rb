@@ -116,7 +116,7 @@ class Connect4
           @end_game = 1
           break
         end
-        puts count
+        #puts count
         count = 0
         j += 1
       end
@@ -146,14 +146,14 @@ class Connect4
             break
           end
         end
+        puts count
         if count >= @win_length
           @end_game = 1
-          break
+          return
         end
-        #puts count
         count = 0
         j += 1
-        puts j
+        #puts j
       end
       j = 0
       i += 1
@@ -166,16 +166,16 @@ class Connect4
     j = 0
     count = 0
     loop do
-      
-      if i > @num_rows
+      if i >= @num_rows
         break
       end
       loop do
-        if j > @num_columns
+        if j >= @num_columns
           break
         end
         while @board[i + count][j + count] == player
           count += 1
+          puts count
           #puts @board[i][j + count]
           if j + count >= @num_columns || i + count >= @num_rows 
             break
@@ -183,7 +183,7 @@ class Connect4
         end
         if count >= @win_length
           @end_game = 1
-          break
+          return
         end
         puts count
         count = 0
@@ -199,7 +199,6 @@ class Connect4
     j = 0
     count = 0
     loop do
-      
       if i > @num_rows
         break
       end
@@ -216,7 +215,7 @@ class Connect4
         end
         if count >= @win_length
           @end_game = 1
-          break
+          return
         end
         puts count
         count = 0
