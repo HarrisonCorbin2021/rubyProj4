@@ -175,7 +175,7 @@ class Connect4
         end
         while @board[i + count][j + count] == player
           count += 1
-          puts count
+          #puts count
           #puts @board[i][j + count]
           if j + count >= @num_columns || i + count >= @num_rows 
             break
