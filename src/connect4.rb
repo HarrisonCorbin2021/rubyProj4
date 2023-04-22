@@ -170,14 +170,14 @@ class Connect4
         break
       end
       loop do
-        if j >= @num_columns
+        if j > @num_columns
           break
         end
         while @board[i + count][j + count] == player
           count += 1
           #puts count
           #puts @board[i][j + count]
-          if j + count >= @num_columns || i + count >= @num_rows 
+          if j + count > @num_columns || i + count > @num_rows 
             break
           end
         end
@@ -186,7 +186,7 @@ class Connect4
           return
         end
         if player == 1
-          print count
+          #print count
         end
         count = 0
         j += 1

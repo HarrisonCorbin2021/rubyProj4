@@ -24,13 +24,15 @@ class Connect4():
         # check horizontal wins
         for i in range(Connect4.num_Cols - 1):
             for j in range(Connect4.num_Rows - 1):
-                if i + count >= Connect4.num_Rows:
+                if i + count <= Connect4.num_Rows:
                     while board[i + count][j] == player:
                         count += 1
+                        print(count)
                         if i + count >= Connect4.num_Rows:
                             break
                     if count >= 4:
                         return True
+        print(count)
         count = 0
 
         # check for vertical wins
