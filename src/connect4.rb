@@ -230,10 +230,10 @@ class Connect4
   end
 
   def winCheck(player)
-    #checkHorizontal(player)
-    #checkVertical(player)
+    checkHorizontal(player)
+    checkVertical(player)
     checkDiagonalL(player)
-    #checkDiagonalR(player)
+    checkDiagonalR(player)
     if @end_game == 1
       return true;
     end
