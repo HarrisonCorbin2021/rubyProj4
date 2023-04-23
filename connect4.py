@@ -9,7 +9,7 @@ class Connect4():
 
     num_Cols = 7
     num_Rows = 6
-    board = [['x' for i in range(0, 7 , 1)] for j in range(0, num_Rows, 1)]
+    board = [['x' for i in range(0, 7 , 1)] for j in range(0, 6, 1)]
         
     def print_board(board):
         for i in range (0, Connect4.num_Cols - 1, 1):
@@ -24,11 +24,11 @@ class Connect4():
         # check horizontal wins
         for i in range(Connect4.num_Cols - 1):
             for j in range(Connect4.num_Rows - 1):
-                if i + count <= Connect4.num_Rows:
+                if i + 1 <= Connect4.num_Rows:
                     while board[i + count][j] == player:
                         count += 1
                         print(count)
-                        if i + count >= Connect4.num_Rows:
+                        if i + count + 1 >= Connect4.num_Rows:
                             break
                     if count >= 4:
                         return True
@@ -92,7 +92,7 @@ class Connect4():
         else:
             print("That column is full. Please choose another")
         if Connect4.winCheck(board, player):
-            print ("Congradulations, Player #{player}. You Win.")
+            print ("Congratulations, Player #{player}. You Win.")
             exit
         if player == 1:
             Connect4.PlayerTurn(board, 2)

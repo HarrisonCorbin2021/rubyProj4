@@ -26,8 +26,6 @@ class Connect4
    playerTurn(@board,1)
   end
 
-
-
   def print_board(board)
     j = 0
     i = 0
@@ -81,7 +79,7 @@ class Connect4
     end
 
     if(winCheck(playNum))
-      puts "Congradulations, Player #{playNum}. You Win."
+      puts "Congratulations, Player #{playNum}. You Win."
       exit
     end
 
