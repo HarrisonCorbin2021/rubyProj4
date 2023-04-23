@@ -18,7 +18,7 @@ class Connect4():
             for j in range(0, Connect4.num_Rows + 1, 1):
                 sys.stdout.write(str(board[i][j]))
 
-    def horizontalWin(board,player):
+    def verticalWin(board,player):
         count = 0
         # check horizontal wins
         for i in range(0, Connect4.num_Cols - 2, 1):
@@ -31,7 +31,7 @@ class Connect4():
                     if count >= 4:
                         return True
 
-    def verticalWin(board,player):
+    def horizontalWin(board,player):
         count = 0
         # check for vertical wins
         for i in range(Connect4.num_Cols - 1):
@@ -41,7 +41,7 @@ class Connect4():
                         #print(count)
                         #print(r)
                         print(i + count)
-                        if j + count + 1 >= Connect4.num_Cols:
+                        if j + count >= Connect4.num_Cols:
                             break
                     if count >= 4:
                         return True

@@ -79,7 +79,7 @@ class Connect4
     end
 
     if(winCheck(playNum))
-      puts "Congratulations, Player #{playNum}. You Win."
+      print "Congratulations, Player #{playNum}. You Win."
       exit
     end
 
