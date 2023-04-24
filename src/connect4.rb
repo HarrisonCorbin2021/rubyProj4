@@ -57,7 +57,7 @@ class Connect4
         exit
       end
       puts "Not a valid entry."
-      chosen_column = gets
+      chosen_column = $stdin.gets
       chosen_column = chosen_column.to_i
     end
 
