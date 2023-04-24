@@ -140,7 +140,7 @@ class Connect4
         while @board[i + count][j] == player
           count += 1
           #puts @board[i][j + count]
-          if i + count >= @num_rows
+          if i + count > @num_rows
             break
           end
         end
@@ -218,7 +218,7 @@ class Connect4
           @end_game = 1
           return
         end
-        puts count
+        #puts count
         count = 0
         j += 1
       end
