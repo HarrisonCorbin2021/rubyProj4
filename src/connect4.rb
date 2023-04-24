@@ -49,7 +49,7 @@ class Connect4
   def playerTurn(board, playNum)
     print_board(@board)
     puts " "
-    chosen_column = gets
+    chosen_column = $stdin.gets
     chosen_column = chosen_column.ord - 'a'.ord
     while chosen_column < 0 || chosen_column > @num_columns
       if chosen_column == 16

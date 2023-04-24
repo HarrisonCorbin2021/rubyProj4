@@ -39,9 +39,11 @@ class Connect4():
                     while board[i][j + count] == player:
                         count += 1
                         #print(count)
-                        #print(r)
-                        print(i + count)
+                        #print(i)
+                        print(j + count)
+                        #print(j + count)
                         if j + count >= Connect4.num_Cols:
+                            print ("I worked")
                             break
                     if count >= 4:
                         return True
