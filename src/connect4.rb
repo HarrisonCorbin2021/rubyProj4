@@ -51,14 +51,14 @@ class Connect4
     puts " "
     chosen_column = $stdin.gets
     chosen_column = chosen_column.ord - 'a'.ord
-    while chosen_column < 0 || chosen_column > @num_columns
+    while chosen_column < 0 || chosen_column >= @num_columns
       if chosen_column == 16
         puts "Goodbye"
         exit
       end
       puts "Not a valid entry."
       chosen_column = $stdin.gets
-      chosen_column = chosen_column.to_i
+      chosen_column = chosen_column.ord - 'a'.ord
     end
 
     if @board[chosen_column][0] != 'x'
@@ -144,7 +144,7 @@ class Connect4
             break
           end
         end
-        puts count
+        #puts count
         if count >= @win_length
           @end_game = 1
           return
