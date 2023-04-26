@@ -41,8 +41,9 @@ class Connect4():
                         #print(count)
                         #print(i)
                         print(j + count)
-                        #print(j + count)
                         if j + count >= Connect4.num_Cols:
+                            count = 0
+                            print(count)
                             print ("I worked")
                             break
                     if count >= 4:
@@ -82,10 +83,12 @@ class Connect4():
         inp = input()
         inp = ord(inp[0]) - ord("a")
         #Check for a valid input
+        print(inp)
         while inp > 7 and inp < 0:
+            print("I worked")
             if inp == 16:
                 print("Goodbye.")
-                exit()
+                quit()
             print("Not a valid entry.")
             inp = int(input())
         #if top row is empty
